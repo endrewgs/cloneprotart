@@ -1,7 +1,7 @@
 import { useEffect, useState, useCallback } from 'react'
 import './App.css'
 
-const SITE = '' // Puxa suas fotos da pasta public/imagens
+const SITE = window.location.origin
 const URL_ICONES = 'https://protart.com.br' // Puxa os ícones originais do servidor
 
 const desktopBanners = ['imagens/banner4.jpg', 'imagens/banner3.jpg', 'imagens/banner2_novo.jpg']
