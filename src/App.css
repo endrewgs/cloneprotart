@@ -832,3 +832,245 @@ a {
     margin-left: 15px;
   }
 }
+
+/* ══════════════════════════════════════════════
+   MODAL DE PRODUTO
+══════════════════════════════════════════════ */
+
+.ModalOverlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.65);
+  backdrop-filter: blur(3px);
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  animation: overlayIn 0.2s ease;
+}
+
+@keyframes overlayIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+.ModalBox {
+  position: relative;
+  background: #fff;
+  border-radius: 12px;
+  width: 100%;
+  max-width: 780px;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.35);
+  animation: modalIn 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+  overflow: hidden;
+}
+
+@keyframes modalIn {
+  from { opacity: 0; transform: scale(0.92) translateY(20px); }
+  to   { opacity: 1; transform: scale(1)    translateY(0);    }
+}
+
+/* Scroll interno — o ModalBox não scrolleia, só o ModalScroll */
+.ModalScroll {
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  /* scrollbar discreta */
+  scrollbar-width: thin;
+  scrollbar-color: #ccc #f5f5f5;
+}
+
+.ModalScroll::-webkit-scrollbar       { width: 6px; }
+.ModalScroll::-webkit-scrollbar-track { background: #f5f5f5; }
+.ModalScroll::-webkit-scrollbar-thumb { background: #ccc; border-radius: 3px; }
+
+/* ── Botão fechar ── */
+.ModalClose {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  z-index: 2;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 2px solid #e0e0e0;
+  background: #fff;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #555;
+  transition: background 0.15s, color 0.15s, border-color 0.15s;
+  padding: 0;
+}
+
+.ModalClose svg {
+  width: 18px;
+  height: 18px;
+  pointer-events: none;
+}
+
+.ModalClose:hover {
+  background: #ff8e48;
+  border-color: #ff8e48;
+  color: #fff;
+}
+
+/* ── Cabeçalho ── */
+.ModalHeader {
+  padding: 36px 36px 0;
+}
+
+.ModalTitulo {
+  font-family: 'Rubik', sans-serif;
+  font-size: 26px;
+  font-weight: 700;
+  color: #08999f;
+  margin: 0 40px 0 0;  /* espaço para o X */
+  line-height: 1.2;
+}
+
+.ModalLinha {
+  width: 72px;
+  height: 5px;
+  background: #ff8e48;
+  border-radius: 2px;
+  margin-top: 10px;
+}
+
+/* ── Corpo ── */
+.ModalBody {
+  padding: 28px 36px;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.ModalDescricao {
+  font-size: 15px;
+  line-height: 1.7;
+  color: #444;
+  margin: 0;
+}
+
+.ModalFeatures {
+  list-style: none;
+  margin: 14px 0 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.ModalFeatures li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+  color: #333;
+  background: #f4fdfd;
+  border-left: 3px solid #08999f;
+  padding: 8px 14px;
+  border-radius: 4px;
+}
+
+.ModalFeatureIcon {
+  color: #ff8e48;
+  font-size: 13px;
+  flex-shrink: 0;
+}
+
+/* ── Galeria ── */
+.ModalGaleria {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+
+.ModalGaleriaItem {
+  border-radius: 8px;
+  overflow: hidden;
+  aspect-ratio: 4 / 3;
+  background: #f0f0f0;
+}
+
+.ModalGaleriaItem img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.3s;
+}
+
+.ModalGaleriaItem:hover img {
+  transform: scale(1.04);
+}
+
+/* ── Rodapé ── */
+.ModalFooter {
+  padding: 0 36px 36px;
+  display: flex;
+  justify-content: center;
+}
+
+.ModalCtaBotao {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 40px;
+  background: #25d366;
+  color: #fff;
+  font-family: 'Rubik', sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  border-radius: 50px;
+  text-decoration: none;
+  box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+  transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+  letter-spacing: 0.2px;
+}
+
+.ModalCtaBotao:hover {
+  background: #1ebe5d;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 28px rgba(37, 211, 102, 0.5);
+}
+
+.ModalWaIcon {
+  width: 22px;
+  height: 22px;
+  flex-shrink: 0;
+}
+
+/* ── Responsivo ── */
+@media screen and (max-width: 600px) {
+  .ModalHeader {
+    padding: 28px 20px 0;
+  }
+
+  .ModalBody {
+    padding: 20px 20px;
+  }
+
+  .ModalFooter {
+    padding: 0 20px 28px;
+  }
+
+  .ModalTitulo {
+    font-size: 20px;
+  }
+
+  .ModalGaleria {
+    grid-template-columns: 1fr;
+  }
+
+  .ModalCtaBotao {
+    width: 100%;
+    justify-content: center;
+    font-size: 15px;
+    padding: 14px 24px;
+  }
+}
