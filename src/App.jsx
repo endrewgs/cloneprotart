@@ -1,7 +1,8 @@
 import { useEffect, useState, useCallback } from 'react'
 import './App.css'
 
-const SITE = 'https://protart.com.br'
+const SITE = '' // Puxa suas fotos da pasta public/imagens
+const URL_ICONES = 'https://protart.com.br' // Puxa os ícones originais do servidor
 
 const desktopBanners = ['imagens/banner4.jpg', 'imagens/banner3.jpg', 'imagens/banner2_novo.jpg']
 const mobileBanners  = ['imagens/banner-mobile3.jpg', 'imagens/banner-mobile.jpg', 'imagens/banner-mobile2_novo.jpg']
@@ -13,73 +14,71 @@ const products = [
     id: 1, title: 'TAPETE DE VINIL', image: 'imagens/tapete-vinil.jpg',
     description: 'Ideais para retenção de sujeira e forte apelo de marketing visual. Feitos sob medida.',
     features: ['Retenção de sujeira', 'Personalização com logomarca', 'Alta durabilidade'],
-    gallery: ['imagens/tapete-vinil.jpg', 'imagens/tapete-vinil.jpg'],
+    gallery: ['imagens/tapete-vinil-1.jpg', 'imagens/tapete-vinil-2.jpg', 'imagens/tapete-vinil-3.jpg', 'imagens/tapete-vinil-4.jpg', 'imagens/tapete-vinil-5.jpg'],
   },
   {
     id: 2, title: 'TAPETE CLEANKAP', image: 'imagens/cleankap.jpg',
     description: 'Tapetes exclusivos com altíssima capacidade de absorção de água.',
     features: ['Alta absorção', 'Secagem rápida', 'Base antiderrapante'],
-    gallery: ['imagens/cleankap.jpg', 'imagens/cleankap.jpg'],
+    gallery: ['imagens/cleankap-1.jpg', 'imagens/cleankap-2.jpg', 'imagens/cleankap-3.jpg', 'imagens/cleankap-4.jpg', 'imagens/cleankap-5.jpg'],
   },
   {
     id: 3, title: 'GRAMA SINTÉTICA', image: 'imagens/grama-sintetica.jpg',
     description: 'Venda e mão de obra especializada para instalação.',
     features: ['Instalação especializada', 'Aparência natural', 'Baixa manutenção'],
-    gallery: ['imagens/grama-sintetica.jpg', 'imagens/grama-sintetica.jpg'],
+    gallery: ['imagens/grama-sintetica-1.jpg', 'imagens/grama-sintetica-2.jpg', 'imagens/grama-sintetica-3.jpg', 'imagens/grama-sintetica-4.jpg'],
   },
   {
-    id: 4, title: 'CAPAS PARA ELEVADORES', image: 'imagens/capa-elevador.jpg',
+    id: 4, title: 'CAPAS PARA ELEVADORES', image: 'imagens/capa-elevadores.jpg',
     description: 'Proteção sob medida para elevadores contra impactos e riscos.',
     features: ['Não propaga chama', 'Antifungo', 'Alta resistência'],
-    gallery: ['imagens/capa-elevador.jpg', 'imagens/capa-elevador.jpg'],
+    gallery: ['imagens/capa-elevadores-1.jpg', 'imagens/capa-elevadores-2.jpg', 'imagens/capa-elevadores-3.jpg'],
   },
   {
     id: 5, title: 'PISO MODULAR', image: 'imagens/piso-modular.jpg',
     description: 'Projetos exclusivos para áreas de lazer e quadras.',
     features: ['Fácil instalação', 'Drenagem eficiente', 'Alta resistência'],
-    gallery: ['imagens/piso-modular.jpg', 'imagens/piso-modular.jpg'],
+    gallery: ['imagens/piso-modular-1.jpg', 'imagens/piso-modular-2.jpg', 'imagens/piso-modular-3.jpg', 'imagens/piso-modular-4.jpg', 'imagens/piso-modular-5.jpg'],
   },
   {
     id: 6, title: 'RUBBERKAP', image: 'imagens/rubberkap.jpg',
     description: 'Emborrachados de 5mm ideais para academias e rampas.',
     features: ['Absorção de impacto', 'Antiderrapante', 'Personalização UV'],
-    gallery: ['imagens/rubberkap.jpg', 'imagens/rubberkap.jpg'],
+    gallery: ['imagens/rubberkap-1.jpg', 'imagens/rubberkap-2.jpg', 'imagens/rubberkap-3.jpg', 'imagens/rubberkap-4.jpg', 'imagens/rubberkap-5.jpg', 'imagens/rubberkap-6.jpg', 'imagens/rubberkap-7.jpg', 'imagens/rubberkap-8.jpg'],
   },
   {
     id: 7, title: 'ITALY ELEGANCE', image: 'imagens/italy-elegance.jpg',
     description: '100% fios de nylon, não solta pelos, com tecnologia europeia.',
     features: ['Não risca o chão', 'Alta definição', 'Fácil manutenção'],
-    gallery: ['imagens/italy-elegance.jpg', 'imagens/italy-elegance.jpg'],
+    gallery: ['imagens/italy-elegance-1.jpg', 'imagens/italy-elegance-2.jpg', 'imagens/italy-elegance-3.jpg'],
   },
   {
     id: 8, title: 'TAPETE TERRA', image: 'imagens/tapete-terra.jpg',
     description: 'Retenção de sujeira pesada (barro, areia). Ideal para obras e galpões.',
     features: ['Textura profunda', 'Retém sujeira pesada', 'Fácil de lavar'],
-    gallery: ['imagens/tapete-terra.jpg', 'imagens/tapete-terra.jpg'],
+    gallery: ['imagens/tapete-terra-1.jpg', 'imagens/tapete-terra-2.jpg'],
   },
   {
     id: 9, title: 'LAMINADO MOEDA', image: 'imagens/laminado-moeda.jpg',
     description: 'Piso vinílico em rolo padrão moeda. Excelente custo-benefício.',
     features: ['Padrão clássico', 'Antiderrapante', 'Rápida aplicação'],
-    gallery: ['imagens/laminado-moeda.jpg', 'imagens/laminado-moeda.jpg'],
+    gallery: ['imagens/laminado-moeda-1.jpg', 'imagens/laminado-moeda-2.jpg', 'imagens/laminado-moeda-3.jpg', 'imagens/laminado-moeda-4.jpg', 'imagens/laminado-moeda-5.jpg'],
   },
   {
     id: 10, title: 'LAMINADO BUS', image: 'imagens/laminado-bus.jpg',
     description: 'Revestimento com ranhuras direcionais, foco em tração e tráfego intenso.',
     features: ['Ranhuras antiderrapantes', 'Fácil higienização', 'Longa vida útil'],
-    gallery: ['imagens/laminado-bus.jpg', 'imagens/laminado-bus.jpg'],
+    gallery: ['imagens/laminado-bus-1.jpg', 'imagens/laminado-bus-2.jpg'],
   },
 ]
 
 /* ─────────────────── Modal ─────────────────── */
 function ProductModal({ product, onClose }) {
-  // Trava o scroll do body
   useEffect(() => {
     document.body.style.overflow = 'hidden'
     return () => { document.body.style.overflow = '' }
   }, [])
 
-  // Fecha com ESC
   useEffect(() => {
     const handler = (e) => { if (e.key === 'Escape') onClose() }
     window.addEventListener('keydown', handler)
@@ -122,13 +121,38 @@ function ProductModal({ product, onClose }) {
               </ul>
             </div>
 
-            {/* Galeria */}
-            <div className="ModalGaleria">
-              {product.gallery.map((img, i) => (
-                <div className="ModalGaleriaItem" key={i}>
-                  <img src={img} alt={`${product.title} — imagem ${i + 1}`} loading="lazy" />
-                </div>
-              ))}
+            {/* Galeria Carrossel Infinito */}
+            <div className="ModalGaleria" style={{ overflow: 'hidden', padding: '15px 0' }}>
+              <style>
+                {`
+                  @keyframes scroll-carousel {
+                    0% { transform: translateX(0); }
+                    100% { transform: translateX(calc(-265px * ${product.gallery.length})); }
+                  }
+                  .carousel-track {
+                    display: flex;
+                    gap: 15px;
+                    width: max-content;
+                    animation: scroll-carousel ${product.gallery.length * 3.5}s linear infinite;
+                  }
+                  .carousel-track:hover {
+                    animation-play-state: paused;
+                  }
+                  .carousel-track img {
+                    width: 250px;
+                    height: 200px;
+                    object-fit: cover;
+                    border-radius: 5px;
+                    border: 1px solid #ddd;
+                    flex-shrink: 0;
+                  }
+                `}
+              </style>
+              <div className="carousel-track">
+                {[...product.gallery, ...product.gallery].map((img, i) => (
+                  <img src={`${SITE}${SITE ? '/' : ''}${img}`} alt={`${product.title} — imagem ${i + 1}`} loading="lazy" key={i} />
+                ))}
+              </div>
             </div>
           </div>
 
@@ -161,18 +185,18 @@ function BannerCarousel({ id, banners, index, onPrev, onNext }) {
           <div
             key={banner}
             className={`imgbanner ${i === index ? 'active' : ''}`}
-            style={{ backgroundImage: `url(${SITE}/${banner})` }}
+            style={{ backgroundImage: `url(${SITE}${SITE ? '/' : ''}${banner})` }}
           />
         ))}
       </div>
       <div id="SetasCarrossel">
         <button className="Setas SetasEsq" type="button" onClick={onPrev} aria-label="Banner anterior">
-          <img src={`${SITE}/imagens/seta-esqb.svg`}  className="SetaEsq1" alt="" />
-          <img src={`${SITE}/imagens/seta-esqb2.svg`} className="SetaEsq2" alt="" />
+          <img src={`${URL_ICONES}/imagens/seta-esqb.svg`}  className="SetaEsq1" alt="" />
+          <img src={`${URL_ICONES}/imagens/seta-esqb2.svg`} className="SetaEsq2" alt="" />
         </button>
         <button className="Setas SetasDir" type="button" onClick={onNext} aria-label="Próximo banner">
-          <img src={`${SITE}/imagens/seta-dirb.svg`}  className="SetaDir1" alt="" />
-          <img src={`${SITE}/imagens/seta-dirb2.svg`} className="SetaDir2" alt="" />
+          <img src={`${URL_ICONES}/imagens/seta-dirb.svg`}  className="SetaDir1" alt="" />
+          <img src={`${URL_ICONES}/imagens/seta-dirb2.svg`} className="SetaDir2" alt="" />
         </button>
       </div>
     </section>
@@ -212,7 +236,7 @@ function App() {
               <a className="Menus" href="#Produtos">PRODUTOS</a>
               <a className="Menus" href="#Contato">CONTATO</a>
               <div className="Contato">
-                <img src={`${SITE}/imagens/whats-topo.svg`} alt="Whatsapp" />
+                <img src={`${URL_ICONES}/imagens/whats-topo.svg`} alt="Whatsapp" />
                 <a href={WA_LINK} target="_blank" rel="noreferrer">(47) 99286-5459</a>
               </div>
             </nav>
@@ -242,7 +266,7 @@ function App() {
           <div className="centralizar_site">
             <div className="Centralizar">
               <div className="Imagem">
-                <img src={`${SITE}/imagens/quem-somos.png`} alt="Quem Somos" />
+                <img src={`${SITE}${SITE ? '/' : ''}imagens/quem-somos.png`} alt="Quem Somos" />
               </div>
               <div className="ConteudoTxt">
                 <h2 className="TituloPrincipal">QUEM SOMOS</h2>
@@ -274,7 +298,7 @@ function App() {
 
             <div className="BlocoGeral">
               {/* Painel de chamada */}
-              <div className="BlocoLivre" style={{ backgroundImage: `url(${SITE}/imagens/produtos.jpg)` }}>
+              <div className="BlocoLivre" style={{ backgroundImage: `url(${SITE}${SITE ? '/' : ''}imagens/produtos.jpg)` }}>
                 <div className="SubTituloPrincipal">LINHA COMPLETA</div>
                 <div className="SubTextoPrincipal">
                   Conheça todos os nossos produtos que contam com uma ótima qualidade e durabilidade.
@@ -290,7 +314,7 @@ function App() {
                   key={product.id}
                   href={`/produtos/${product.id}`}
                   onClick={(e) => openModal(product, e)}
-                  style={{ backgroundImage: `url(${product.image})` }}
+                  style={{ backgroundImage: `url(${SITE}${SITE ? '/' : ''}${product.image})` }}
                 >
                   <div className="SubTituloPrincipal SubTituloNone">{product.title}</div>
                   <div className="ConteudoTxt">
@@ -315,7 +339,7 @@ function App() {
               <div className="BlocoGeral">
                 <a className="Blocos BlocoWa" href={WA_LINK} target="_blank" rel="noreferrer">
                   <div className="Icone">
-                    <img src={`${SITE}/imagens/whatsapp.svg`} alt="Whatsapp" />
+                    <img src={`${URL_ICONES}/imagens/whatsapp.svg`} alt="Whatsapp" />
                   </div>
                   <div className="Txts">
                     <div className="Txt1">WHATSAPP</div>
@@ -325,7 +349,7 @@ function App() {
 
                 <div className="Blocos BlocoLocal">
                   <div className="Icone">
-                    <img src={`${SITE}/imagens/local.svg`} alt="Localização" />
+                    <img src={`${URL_ICONES}/imagens/local.svg`} alt="Localização" />
                   </div>
                   <div className="Txts Tam3">
                     <div className="Txt1">LOCALIZAÇÃO</div>
