@@ -6,27 +6,27 @@ const SITE = 'https://protart.com.br'
 const desktopBanners = ['imagens/banner4.jpg', 'imagens/banner3.jpg', 'imagens/banner2_novo.jpg']
 const mobileBanners = ['imagens/banner-mobile3.jpg', 'imagens/banner-mobile.jpg', 'imagens/banner-mobile2_novo.jpg']
 
+const WA_LINK = 'https://api.whatsapp.com/send?phone=5547992865459'
+
 const products = [
-  { title: 'TAPETE VINIL', image: 'arquivos/tapete-vinil/capa.jpg', href: 'https://protart.com.br/produtos/tapete-vinil' },
-  { title: 'TAPETE CLEANKAP', image: 'arquivos/tapete-cleankap/capa.jpg', href: 'https://protart.com.br/produtos/tapete-cleankap' },
-  { title: 'TAPETE DUO', image: 'arquivos/tapete-duo/capa.jpg', href: 'https://protart.com.br/produtos/tapete-duo' },
-  { title: 'RUBBERKAP', image: 'arquivos/rubberkap/capa.jpg', href: 'https://protart.com.br/produtos/rubberkap' },
-  { title: 'PISO MOEDA E BUS', image: 'arquivos/piso-moeda-bus/capa.jpg', href: 'https://protart.com.br/produtos/piso-moeda-bus' },
-  { title: 'ÁREAS ÚMIDAS', image: 'arquivos/pisos-areas-umidas/capa.jpg', href: 'https://protart.com.br/produtos/pisos-areas-umidas' },
-  { title: 'WIND BANNER', image: 'arquivos/wind-banner/capa.jpg', href: 'https://protart.com.br/produtos/wind-banner' },
-  { title: 'TAPETE SANITIZANTE', image: 'arquivos/tapete-sanitizante/capa.jpg', href: 'https://protart.com.br/produtos/tapete-sanitizante' },
-  { title: 'FITAS - PROTEPISO - PISO TÁTIL', image: 'arquivos/fitas-protepiso-tatil/capa.jpg', href: 'https://protart.com.br/produtos/fitas-protepiso-tatil' },
-  { title: 'GRAMA SINTÉTICA', image: 'arquivos/grama-sintetica/capa.jpg', href: 'https://protart.com.br/produtos/grama-sintetica' },
-  { title: 'TAPETE EXCLUSIVO', image: 'arquivos/tapete-exclusivo/capa.jpg', href: 'https://protart.com.br/produtos/tapete-exclusivo' },
+  { title: 'Capas para Elevadores',   image: 'imagens/capa-elevador.jpg',   href: WA_LINK },
+  { title: 'Tapetes de Vinil',        image: 'imagens/tapete-vinil.jpg',    href: WA_LINK },
+  { title: 'Tapetes Cleankap',        image: 'imagens/cleankap.jpg',        href: WA_LINK },
+  { title: 'Grama Sintética',         image: 'imagens/grama-sintetica.jpg', href: WA_LINK },
+  { title: 'Piso Modular',            image: 'imagens/piso-modular.jpg',    href: WA_LINK },
+  { title: 'Rubberkap',               image: 'imagens/rubberkap.jpg',       href: WA_LINK },
+  { title: 'Tapete Italy Elegance',   image: 'imagens/italy-elegance.jpg',  href: WA_LINK },
+  { title: 'Piso Vinílico',           image: 'imagens/piso-vinilico.jpg',   href: WA_LINK },
+  { title: 'Wind Banner',             image: 'imagens/wind-banner.jpg',     href: WA_LINK },
+  { title: 'Tapete Laminado Bus',     image: 'imagens/laminado-bus.jpg',    href: WA_LINK },
+  { title: 'Tapete Laminado Moeda',   image: 'imagens/laminado-moeda.jpg',  href: WA_LINK },
+  { title: 'Tapete Terra',            image: 'imagens/tapete-terra.jpg',    href: WA_LINK },
 ]
 
-const productOptions = products.map((item) => item.title)
-
 const contactLinks = {
-  whatsapp:
-    'https://api.whatsapp.com/send?phone=5511984199355&text=Ol%C3%A1%2C%20vi%20seu%20an%C3%BAncio%20e%20gostaria%20de%20saber%20mais%20sobre%20produtos%20no%20site%3A%20www.protart.com.br',
-  instagram: 'http://www.instagram.com/protart.tapetes',
-  email: 'mailto:tapetes@protart.com.br',
+  whatsapp: WA_LINK,
+  instagram: 'http://www.instagram.com/destaquevisualtapetes',
+  email: 'mailto:contato@destaquevisualtapetes.com.br',
 }
 
 function BannerCarousel({ id, banners, index, onPrev, onNext }) {
@@ -64,11 +64,9 @@ function App() {
     const desktopTimer = setInterval(() => {
       setDesktopIndex((prev) => (prev + 1) % desktopBanners.length)
     }, 5000)
-
     const mobileTimer = setInterval(() => {
       setMobileIndex((prev) => (prev + 1) % mobileBanners.length)
     }, 5000)
-
     return () => {
       clearInterval(desktopTimer)
       clearInterval(mobileTimer)
@@ -77,33 +75,27 @@ function App() {
 
   return (
     <>
+      {/* ── HEADER ── */}
       <header id="Topo">
         <div className="centralizar_site">
           <div className="Centralizar">
             <div className="Logotipo">
-              <a href="#top">
-                <img src={`${SITE}/imagens/logotipo.png`} alt="Prot & Art" />
+              <a href="#top" className="LogoTexto">
+                <span className="LogoTopo">DESTAQUE VISUAL</span>
+                <span className="LogoSub">TAPETES</span>
               </a>
             </div>
 
             <nav className="MenuGeral">
-              <a className="Menus" href="#top">
-                HOME
-              </a>
-              <a className="Menus" href="#QuemSomos">
-                QUEM SOMOS
-              </a>
-              <a className="Menus" href="#Produtos">
-                PRODUTOS
-              </a>
-              <a className="Menus" href="#Contato">
-                CONTATO
-              </a>
+              <a className="Menus" href="#top">HOME</a>
+              <a className="Menus" href="#QuemSomos">QUEM SOMOS</a>
+              <a className="Menus" href="#Produtos">PRODUTOS</a>
+              <a className="Menus" href="#Contato">CONTATO</a>
 
               <div className="Contato">
                 <img src={`${SITE}/imagens/whats-topo.svg`} alt="Whatsapp" />
                 <a href={contactLinks.whatsapp} target="_blank" rel="noreferrer">
-                  (11) 98419-9355
+                  (47) 99286-5459
                 </a>
               </div>
             </nav>
@@ -112,6 +104,7 @@ function App() {
       </header>
 
       <main id="top">
+        {/* ── BANNERS ── */}
         <div id="BannerPrincipal">
           <BannerCarousel
             id="Banner"
@@ -132,6 +125,7 @@ function App() {
           />
         </div>
 
+        {/* ── QUEM SOMOS ── */}
         <section id="QuemSomos">
           <div className="centralizar_site">
             <div className="Centralizar">
@@ -143,23 +137,19 @@ function App() {
                 <h2 className="TituloPrincipal">QUEM SOMOS</h2>
                 <div className="Linha">&nbsp;</div>
                 <p className="TextoPrincipal">
-                  A Prot & Art é uma empresa especializada na distribuição de tapetes e proteção para pisos, que
-                  conta com uma ótima estrutura, estoque permanente e uma equipe altamente qualificada para atendê-lo
-                  com eficiência e rapidez.
+                  A Destaque Visual Tapetes é uma empresa especializada em soluções de alta performance para pisos e
+                  tapetes personalizados. Contamos com uma equipe altamente qualificada para atendê-lo com eficiência,
+                  qualidade e rapidez.
                   <br />
                   <br />
-                  Os profissionais da Prot & Art oferecem um atendimento personalizado de acordo com as suas
-                  necessidades para um trabalho comprometido com resultados.
+                  Oferecemos atendimento personalizado, garantindo que o seu projeto – seja residencial, comercial ou
+                  industrial – seja executado com comprometimento e resultados visuais impecáveis.
                 </p>
 
                 <div className="Distribuidor">
-                  <div className="TextoPrincipal2">
-                    Distribuidor
-                    <br />
-                    Autorizado
-                  </div>
-                  <div className="TextoPrincipal2">
-                    <img src={`${SITE}/imagens/kapazi.png`} alt="Kapazi" className="kapazi" />
+                  <div className="DistaqBadge">
+                    <span className="DistaqIcon">✦</span>
+                    Mão de obra Especializada
                   </div>
                 </div>
               </div>
@@ -167,19 +157,21 @@ function App() {
           </div>
         </section>
 
+        {/* ── PRODUTOS ── */}
         <section id="Produtos">
           <div className="centralizar_site">
             <h2 className="TituloPrincipal">PRODUTOS</h2>
             <div className="Linha">&nbsp;</div>
 
             <div className="BlocoGeral">
+              {/* Painel de chamada — ocupa 1 slot no grid de 3 colunas */}
               <div className="BlocoLivre" style={{ backgroundImage: `url(${SITE}/imagens/produtos.jpg)` }}>
-                <div className="SubTituloPrincipal">LINHA PROFISSIONAL</div>
+                <div className="SubTituloPrincipal">LINHA COMPLETA</div>
                 <div className="SubTextoPrincipal">
-                  Conheça todos os nossos produtos que contam com uma ótima qualidade.
+                  Conheça todos os nossos produtos que contam com uma ótima qualidade e durabilidade.
                   <br />
                   <br />
-                  <span>by KAPAZI</span>
+                  <span>Destaque Visual</span>
                 </div>
                 <div className="FiltroLivre">&nbsp;</div>
               </div>
@@ -191,7 +183,7 @@ function App() {
                   href={product.href}
                   target="_blank"
                   rel="noreferrer"
-                  style={{ backgroundImage: `url(${SITE}/${product.image})` }}
+                  style={{ backgroundImage: `url(${product.image})` }}
                 >
                   <div className="SubTituloPrincipal SubTituloNone">{product.title}</div>
                   <div className="ConteudoTxt">
@@ -207,6 +199,7 @@ function App() {
           </div>
         </section>
 
+        {/* ── CONTATO ── */}
         <section id="Contato">
           <div className="Conteudos">
             <div className="centralizar_site">
@@ -221,7 +214,7 @@ function App() {
                   </div>
                   <div className="Txts">
                     <div className="Txt1">WHATSAPP</div>
-                    <div className="Txt2">(11) 98419-9355</div>
+                    <div className="Txt2">(47) 99286-5459</div>
                   </div>
                 </a>
 
@@ -231,7 +224,7 @@ function App() {
                   </div>
                   <div className="Txts">
                     <div className="Txt1">INSTAGRAM</div>
-                    <div className="Txt2">@protart.tapetes</div>
+                    <div className="Txt2">@destaquevisualtapetes</div>
                   </div>
                 </a>
 
@@ -241,7 +234,7 @@ function App() {
                   </div>
                   <div className="Txts Tam2">
                     <div className="Txt1">EMAIL</div>
-                    <div className="Txt2">tapetes@protart.com.br</div>
+                    <div className="Txt2">contato@destaquevisualtapetes.com.br</div>
                   </div>
                 </a>
 
@@ -268,9 +261,9 @@ function App() {
                       <label htmlFor="contato_produto">Produto interessado</label>
                       <select name="contato_produto" id="contato_produto" defaultValue="">
                         <option value=""></option>
-                        {productOptions.map((option) => (
-                          <option value={option} key={option}>
-                            {option}
+                        {products.map((p) => (
+                          <option value={p.title} key={p.title}>
+                            {p.title}
                           </option>
                         ))}
                       </select>
@@ -291,7 +284,7 @@ function App() {
                   </div>
                   <div className="Txts Tam3">
                     <div className="Txt1">LOCALIZAÇÃO</div>
-                    <div className="Txt2">Rua Deputado Emílio Carlos, 142 - Vila Campesina / Osasco-SP</div>
+                    <div className="Txt2">Santa Catarina e Região</div>
                   </div>
                 </div>
               </div>
@@ -300,29 +293,29 @@ function App() {
 
           <div className="Mapa">
             <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3657.7825398104396!2d-46.77329738549198!3d-23.540322566699682!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ceff6b75d4ea23%3A0x34ac5974b98aee75!2sR.%20Dep.%20Em%C3%ADlio%20Carlos%2C%20142%20-%20Vila%20Campesina%2C%20Osasco%20-%20SP%2C%2006028-000!5e0!3m2!1spt-BR!2sbr!4v1648490927681!5m2!1spt-BR!2sbr"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3597217.7897740247!2d-53.27166!3d-27.2423392!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94d8855329765849%3A0x1a8547f3ee2e0af3!2sSanta%20Catarina!5e0!3m2!1spt-BR!2sbr!4v1710000000000!5m2!1spt-BR!2sbr"
               width="100%"
               height="440"
               style={{ border: 0 }}
               allowFullScreen
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
-              title="Mapa Prot & Art"
+              title="Mapa Destaque Visual Tapetes - Santa Catarina"
             />
           </div>
         </section>
       </main>
 
+      {/* ── FOOTER ── */}
       <footer id="Rodape">
         <div className="centralizar_site">
           <div className="Centralizar">
-            <div className="LogotipoEvernet">
-              <a href="https://www.evernet.com.br/" target="_blank" rel="noreferrer">
-                <img src={`${SITE}/imagens/logoevernetbranco.svg`} alt="Evernet" />
-              </a>
+            <div className="LogotipoRodape">
+              <span className="LogoRodapeTopo">DESTAQUE VISUAL</span>
+              <span className="LogoRodapeSub">TAPETES</span>
             </div>
 
-            <div className="Direitos">© 2022 PROT & ART - Tapetes e Capachos</div>
+            <div className="Direitos">© 2026 DESTAQUE VISUAL - Tapetes e Soluções em Pisos</div>
 
             <a className="IrTopo" href="#top">
               <img src={`${SITE}/imagens/seta-topo.svg`} alt="Topo" />
@@ -332,6 +325,7 @@ function App() {
         </div>
       </footer>
 
+      {/* ── FLOATING WHATSAPP ── */}
       <a className="ancora_wp" href={contactLinks.whatsapp} target="_blank" rel="noreferrer" aria-label="Abrir Whatsapp" />
     </>
   )

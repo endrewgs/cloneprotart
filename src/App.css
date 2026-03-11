@@ -120,9 +120,30 @@ a {
   align-items: center;
 }
 
-#Topo .Logotipo img {
-  width: 268px;
-  height: auto;
+/* ── Logo tipográfico ── */
+.LogoTexto {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.1;
+  text-decoration: none;
+}
+
+.LogoTopo {
+  font-family: 'Rubik', sans-serif;
+  font-size: 22px;
+  font-weight: 700;
+  color: #08999f;
+  letter-spacing: 2px;
+  white-space: nowrap;
+}
+
+.LogoSub {
+  font-family: 'Rubik', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  color: #ff8e48;
+  letter-spacing: 4px;
+  text-transform: uppercase;
 }
 
 #Topo .MenuGeral {
@@ -297,9 +318,25 @@ a {
   gap: 15px;
 }
 
-.kapazi {
-  border-radius: 8px;
-  width: 120px;
+/* Badge "Mão de obra Especializada" */
+.DistaqBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  background: linear-gradient(135deg, #08999f 0%, #005861 100%);
+  color: #fff;
+  font-family: 'Rubik', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  border-radius: 4px;
+  border-left: 4px solid #ff8e48;
+}
+
+.DistaqIcon {
+  color: #ff8e48;
+  font-size: 16px;
 }
 
 #Produtos {
@@ -469,7 +506,7 @@ a {
 }
 
 #Contato .Tam2 {
-  width: 195px;
+  width: 260px;
 }
 
 #Contato .Tam3 {
@@ -573,8 +610,28 @@ a {
   justify-content: space-between;
 }
 
-#Rodape .LogotipoEvernet img {
-  height: 20px;
+/* ── Logo rodapé tipográfico ── */
+.LogotipoRodape {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.1;
+}
+
+.LogoRodapeTopo {
+  font-family: 'Rubik', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: 2px;
+}
+
+.LogoRodapeSub {
+  font-family: 'Rubik', sans-serif;
+  font-size: 9px;
+  font-weight: 600;
+  color: #ff8e48;
+  letter-spacing: 3px;
+  text-transform: uppercase;
 }
 
 #Rodape .Direitos,
@@ -603,8 +660,12 @@ a {
 }
 
 @media screen and (max-width: 1010px) {
-  #Topo .Logotipo img {
-    width: 200px;
+  .LogoTopo {
+    font-size: 17px;
+  }
+
+  .LogoSub {
+    font-size: 11px;
   }
 
   #Topo .Menus {
